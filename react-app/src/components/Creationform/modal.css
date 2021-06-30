@@ -1,0 +1,50 @@
+.ModalComp {
+    margin: 1rem auto;
+    max-width: 1000px;
+    padding: 1rem;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .modal {
+    align-self: flex-start;
+
+    z-index: 100;
+    height: fit-content;
+    width: 500px;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px 3px;
+    font-family: Helvetica, Arial, sans-serif;
+    padding: 10px;
+    overflow: auto;
+  }
+
+  .modal #close {
+    position: absolute;
+    right: -1rem;
+    top: -1rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.5rem;
+    margin: 0 auto;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px #0000003a;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.562);
+  }
+ .modalContainer{
+   width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+   z-index: 10;
+ }

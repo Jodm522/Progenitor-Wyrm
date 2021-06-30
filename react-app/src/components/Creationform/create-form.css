@@ -1,0 +1,14 @@
+.formContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.step2Div{
+    display: flex;
+
+}
+.modalContainer{
+    width: 100px;
+  height: 100px;
+  position: relative;
+}

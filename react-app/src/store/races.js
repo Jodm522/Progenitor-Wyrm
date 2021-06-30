@@ -1,4 +1,3 @@
-
 const LOAD_ONE = "races/LOAD_ONE";
 const LOAD = "races/LOAD";
 
@@ -6,8 +5,9 @@ const load = (allRaces) => ({
   type: LOAD,
   allRaces,
 });
+
 const loadOne = (race)=>({
-  type: LOAD_ONE,
+type: LOAD_ONE,
  race
 })
 
@@ -18,7 +18,6 @@ export const getRaces = ()  => async (dispatch) => {
         const raceList = await res.json();
         dispatch(load(raceList));
     }
-
 }
 
 export const getOneRace = (id) => async (dispatch)=>{
