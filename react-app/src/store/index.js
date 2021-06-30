@@ -1,9 +1,14 @@
 import {createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session"
-
+import  formStepReducer from "./characterFormStep"
+import raceReducer from "./races"
+import modalReducer from "./modalStore"
 const rootReducer = combineReducers({
-    session
+    session,
+    formStepReducer,
+    raceReducer,
+    modalReducer
 });
 
 

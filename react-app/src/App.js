@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
+import CreationForm from "./components/Creationform"
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -41,9 +42,12 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} >
+        <Route path="/" exact={true} >
           <h1>My Home Page</h1>
-        </ProtectedRoute>
+        </Route>
+        <Route path="/characters/create" exact>
+        <CreationForm />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
