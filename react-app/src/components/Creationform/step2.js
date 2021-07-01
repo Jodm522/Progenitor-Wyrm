@@ -28,12 +28,11 @@ e.preventDefault();
 
 
  const finishStep2 = (e) => {
-   console.log("SUBMITTEED")
+
    setStep2Complete(true);
    dispatch(formStepFunc(3));
    dispatch(step2Submit(CharRace))
  };
-
 
   useEffect(() => {
     dispatch(getRaces());
@@ -100,6 +99,15 @@ const step2Edit=(e)=>{
                 )}
               </div>
             )}
+            {step2Complete && <div>
+            <div>{CharRace}</div>
+            <button type="button" onClick={step2Edit}>
+              Edit Step 2
+            </button>
+              </div>
+
+
+            }
           </div>
         );
 }

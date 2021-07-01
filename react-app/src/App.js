@@ -8,7 +8,8 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
-import CreationForm from "./components/Creationform"
+import CreationForm from "./components/Creationform";
+import CustomizeForm from "./components/Customizeform";
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -16,7 +17,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -37,16 +38,19 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <Route path="/" exact={true} >
+        <Route path="/" exact={true}>
           <h1>My Home Page</h1>
         </Route>
         <Route path="/characters/create" exact>
-        <CreationForm />
+          <CreationForm />
+        </Route>
+        <Route path="/characters/customize" exact>
+          <CustomizeForm />
         </Route>
       </Switch>
     </BrowserRouter>

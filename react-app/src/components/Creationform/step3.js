@@ -1,31 +1,114 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import {formStepFunc} from "../../store/characterFormStep"
-import {getOneRace} from "../../store/races"
+import { Redirect, useHistory } from "react-router-dom";
+import { formStepFunc } from "../../store/characterFormStep";
+import { getClasses } from "../../store/classStore";
 
-const Step3 = () =>{
+import { getModalClass } from "../../store/modalStore";
+import ClassDetails from "./classModal";
+import { step3Submit } from "../../store/characterFormStep";
+
+
+
+const Step3 = () => {
+const history = useHistory();
 const dispatch = useDispatch();
-const [step3Complete, setStep3Complete] = useState(false)
-const race = useSelector((state) => {
-  return state?.formStepReducer.step2Details.race;
-});
+const [step3Complete, setStep3Complete] = useState(false);
+const [charClass, setCharClass] = useState("");
+const [modal, setModal] = useState(false);
 
-useEffect(() => {
-  dispatch(getOneRace(race));
-}, [dispatch]);
 
-const step3Submit=()=>{
-  setStep3Complete(true)
-  dispatch(formStepFunc(3))
+const openModal = (e) =>{
+  console.log(e.target.id);
+  dispatch(getModalClass(e.target.id));
+  setModal(true);
 }
-useEffect(() => {
-  dispatch(getOneRace(race));
-}, [dispatch]);
+const closeModal = () => {
+  setModal(false);
+};
 
-return(<div>
-{race && <div>{race}</div>}
-</div>
-)
+const finishStep3 = (e) => {
+  setStep3Complete(true);
+  dispatch(formStepFunc(4));
+  dispatch(step3Submit(charClass));
+};
+const step4Start =()=>{
+
 }
-export default Step3
+
+ useEffect(() => {
+   dispatch(getClasses());
+ }, [dispatch]);
+
+ const classes = useSelector((state) => {
+   return state?.classReducer.results;
+ });
+
+ const step3Edit = (e) => {
+   setStep3Complete(false);
+ };
+return (
+  <div className="step3Div">
+    {modal && (
+      <div className="modalContainer">
+        <button id="close" onClick={closeModal}>
+          X
+        </button>
+        <ClassDetails modal={modal} closeModal={closeModal} />
+      </div>
+    )}
+    {step3Complete === false && (
+      <div>
+        <form>
+          <div
+            className="classButtonMatrix"
+            onChange={(e) => {
+              setCharClass(e.target.value);
+            }}
+          >
+            {classes &&
+              classes.map((thisClass) => (
+                <div>
+                  <input
+                    type="radio"
+                    name="raceCheck"
+                    value={thisClass.index}
+                    id={`${thisClass.name}Check`}
+                    required={true}
+                  />
+                  <label for={`${thisClass.name}Check`}>{thisClass.name}</label>
+                  <div>
+                    <button
+                      id={thisClass.index}
+                      className="button"
+                      type="button"
+                      onClick={openModal}
+                    >
+                      More info
+                    </button>
+                  </div>
+                </div>
+              ))}
+          </div>
+          <button type="button" onClick={finishStep3}>
+            Continue to next Step
+          </button>
+        </form>
+      </div>
+    )}
+    {step3Complete && <div>
+      <div>
+        {charClass}
+        </div>
+        <button type="button" onClick={step3Edit} onClick={step4Start}>
+              Edit Step 3
+            </button>
+            </div>
+        }
+  </div>
+);
+
+
+
+};
+export default Step3;

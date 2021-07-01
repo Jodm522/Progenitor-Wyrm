@@ -4,11 +4,14 @@ import session from "./session"
 import  formStepReducer from "./characterFormStep"
 import raceReducer from "./races"
 import modalReducer from "./modalStore"
+import classReducer from "./classStore";
+
 const rootReducer = combineReducers({
     session,
     formStepReducer,
     raceReducer,
-    modalReducer
+    modalReducer,
+    classReducer
 });
 
 
