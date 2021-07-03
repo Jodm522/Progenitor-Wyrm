@@ -28,7 +28,6 @@ e.preventDefault();
 
 
  const finishStep2 = (e) => {
-
    setStep2Complete(true);
    dispatch(formStepFunc(3));
    dispatch(step2Submit(CharRace))
