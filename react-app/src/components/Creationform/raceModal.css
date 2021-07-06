@@ -1,0 +1,78 @@
+:root{
+    --accent-one: #B42619;
+    --accent-two:  #972829;
+    --accent-three: #131d56;
+    --accent-four: #2B3C3E;
+    --accent-5: #d6c59f;
+    --text-color: #383636;
+}
+
+
+.modalTitle{
+ font-size: 20px;
+ border-bottom: 2px solid var(--accent-two);
+ width: fit-content;
+ margin: 5px;
+}
+
+.raceBox1{
+   display: flex;
+ }
+.raceSpeedSize{
+  display: flex;
+  flex-direction: column;
+}
+.raceAbilityBonuses{
+  display: flex;
+  flex-direction: column;
+}
+.eachRaceBonus{
+  display: flex;
+  justify-content: space-around;
+}
+.raceStatsHead{
+    text-align: left;
+   border-bottom: 2px solid var(--accent-one);
+   width: fit-content;
+}
+.raceStatsText{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.raceAgeHead{
+    text-align: left;
+    border-bottom: 2px solid var(--accent-one);
+    width: fit-content;
+    margin: 5px;
+}
+.raceAge{
+text-align: left;
+}
+
+.alignmentHead{
+    border-bottom: 2px solid var(--accent-one);
+    width: fit-content;
+    margin: 5px;
+}
+
+.raceLanguageHead{
+      border-bottom: 2px solid var(--accent-one);
+    width: fit-content;
+    margin: 5px;
+}
+.raceSizeHead{
+     border-bottom: 2px solid var(--accent-one);
+    width: fit-content;
+    margin: 5px;
+}
+.raceTraitsHead{
+     border-bottom: 2px solid var(--accent-one);
+    width: fit-content;
+    margin: 5px;
+}
+.raceTraitsText{
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+}

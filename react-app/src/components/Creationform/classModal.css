@@ -1,0 +1,68 @@
+:root {
+  --accent-one: #b42619;
+  --accent-two: #972829;
+  --accent-three: #131d56;
+  --accent-four: #2b3c3e;
+  --accent-5: #d6c59f;
+  --text-color: #383636;
+}
+.classModalTitle {
+  align-self: center;
+  text-align: center;
+  border-bottom: 2px solid var(--accent-one);
+  width: fit-content;
+}
+.modalDetails {
+  text-align: left;
+  width: 100%;
+}
+.classModalContainer {
+  text-align: left;
+  width: 100%;
+}
+.classBox1 {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.savingThrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eachSavingThrow {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.profTitle {
+  text-align: left;
+  width: fit-content;
+  border-bottom: 2px solid var(--accent-one);
+  margin: 10px
+}
+.eachProf {
+  display: grid;
+  grid-template-areas:
+    "area1 area2 area3"
+    "area4 area5 area6";
+}
+.hitDieDiv {
+  text-align: center;
+  align-items: center;
+}
+.startingEquipText {
+  display: grid;
+  grid-template-areas:
+    "area1 area2 area3"
+    "area4 area5 area6";
+}
+.startingEquipHead{
+    margin:10px;
+    border-bottom: 2px solid var(--accent-one);
+    width: fit-content
+}

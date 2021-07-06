@@ -15,13 +15,14 @@ export const skills = {
     performance: { name: "Performance" },
     persuasion: { name: "Persuasion" },
     religion: { name: "Religion" },
-    sleightOfHand: { name: "Slight of Hand" },
+    sleightOfHand: { name: "Sleight of Hand" },
     stealth: { name: "Stealth" },
     survival: { name: "Survival" },
   },
 };
 export const races = {
   dwarf: {
+    name: "Dwarf",
     statBonuses: { CON: 2, WIS: 1 },
     speed: 25,
     profeciencies: [],
@@ -77,6 +78,7 @@ export const races = {
   },
 
   elf: {
+    name: "Elf",
     statBonuses: { DEX: 2, INT: 1 },
     speed: 30,
     traits: [
@@ -168,6 +170,7 @@ export const races = {
   },
 
   halfling: {
+    name: "Halfling",
     statBonuses: { DEX: 2, CHA: 1 },
     speed: 25,
     traits: [
@@ -215,6 +218,7 @@ export const races = {
   },
 
   dragonborn: {
+    name: "Dragonborn",
     statBonuses: { STR: 2, CHA: 1 },
     speed: 30,
     traits: [
@@ -236,7 +240,8 @@ export const races = {
   },
 
   gnome: {
-    ststBonuses: { INT: 2, CON: 1 },
+    name: "Gnome",
+    statBonuses: { INT: 2, CON: 1 },
     traits: [
       {
         index: "darkvision",
@@ -272,6 +277,7 @@ export const races = {
   },
 
   half_elf: {
+    name: "Half Elf",
     statBonuses: { CHA: 2 },
     chooseStats: 2,
     speed: 30,
@@ -305,6 +311,7 @@ export const races = {
     ],
   },
   tiefling: {
+    name: "Tiefling",
     statBonuses: { INT: 1, CHA: 2 },
     speed: 30,
     traits: [
@@ -335,7 +342,7 @@ export const backgrounds = [
   },
   {
     name: "Charlatan",
-    skillProficiencies: ["Deception", "Slight of hand"],
+    skillProficiencies: ["Deception", "Sleight of hand"],
     tool_prof: { disguise_kit: "Disguise_kit", forgery_kit: "Forgery kit" },
   },
 
@@ -450,6 +457,8 @@ export const armors = {
 };
 export const classes = {
   barbarian: {
+    name:"Barbarian",
+    hitDie:12,
     sugg_background: "Outlander",
     skillProficiencies: {
       choose: 2,
@@ -467,6 +476,8 @@ export const classes = {
     startingArmorOptions: [],
   },
   bard: {
+    name:"Bard",
+    hitDie:8,
     sugg_background: "Entertainer",
     skillProficiencies: {
       choose: 3,
@@ -486,7 +497,7 @@ export const classes = {
         { name: "Performance" },
         { name: "Persuasion" },
         { name: "Religion" },
-        { name: "Slight of Hand" },
+        { name: "Sleight of Hand" },
         { name: "Stealth" },
         { name: "Survival" },
       ],
@@ -495,6 +506,8 @@ export const classes = {
     startingArmorOptions: [armors.leather],
   },
   cleric: {
+    name:"Cleric",
+    hitDie:8,
     sugg_background: "Acolyte",
     skillProficiencies: {
       choose: 2,
@@ -510,6 +523,8 @@ export const classes = {
     startingArmorOptions: [armors.scaleMail, armors.leather, armors.chainMail],
   },
   druid: {
+    name:"Druid",
+    hitDie:8,
     sugg_background: "Hermit",
     skillProficiencies: {
       choose: 2,
@@ -528,6 +543,8 @@ export const classes = {
     startingArmorOptions: [armors.leather],
   },
   fighter: {
+    name:"Fighter",
+    hitDie:10,
     sugg_background: "Soldier",
     skillProficiencies: {
       choose: 2,
@@ -546,6 +563,8 @@ export const classes = {
     startingArmorOptions: [armors.chainMail, armors.leather],
   },
   monk: {
+    name:"Monk",
+    hitDie:8,
     sugg_background: "Hermit",
     skillProficiencies: {
       choose: 2,
@@ -562,6 +581,8 @@ export const classes = {
     startingArmorOptions: [],
   },
   paladin: {
+    name:"Paladin",
+    hitDie:10,
     sugg_background: "Noble",
     skillProficiencies: {
       choose: 2,
@@ -569,15 +590,17 @@ export const classes = {
         skills.any.athletics,
         skills.any.insight,
         skills.any.intimidation,
+        skills.any.medicine,
         skills.any.persuasion,
-        skills.any.medicine,
-        skills.any.medicine,
+        skills.any.religion,
       ],
     },
     savingThrows: ["WIS", "CHA"],
     startingArmorOptions: [armors.chainMail],
   },
   ranger: {
+    name:"Ranger",
+    hitDie:10,
     sugg_background: "Outlander",
     skillProficiencies: {
       choose: 2,
@@ -596,6 +619,8 @@ export const classes = {
     startingArmorOptions: [armors.scaleMail, armors.leather],
   },
   rogue: {
+    name:"Rogue",
+    hitDie:8,
     sugg_background: "Charlatan",
     skillProficiencies: {
       choose: 4,
@@ -617,6 +642,8 @@ export const classes = {
     startingArmorOptions: [armors.leather],
   },
   sorcerer: {
+    name:"Sorcerer",
+    hitDie:6,
     sugg_background: "Hermit",
     skillProficiencies: {
       choose: 2,
@@ -633,6 +660,8 @@ export const classes = {
     startingArmorOptions: [],
   },
   warlock: {
+    name:"Warlock",
+    hitDie:6,
     sugg_background: "Charlatan",
     skillProficiencies: {
       choose: 2,
@@ -650,6 +679,8 @@ export const classes = {
     startingArmorOptions: [armors.leather],
   },
   wizard: {
+    name:"Wizard",
+    hitDie:6,
     sugg_background: "Sage",
     skillProficiencies: {
       choose: 2,

@@ -8,7 +8,7 @@
 //  traits:[]
 // };
 
-const characterBuilder = (charInfo) => {
+export const characterBuilder = (charInfo) => {
   const {
     baseStats,
     prof_bonus,
@@ -16,8 +16,10 @@ const characterBuilder = (charInfo) => {
     savingThrows,
     armorStats,
     hitDie,
+
   } = charInfo;
-  let { speed } = charInfo;
+  console.log(skillProficiencies)
+  let {speed} = charInfo
   const mods = {
     STRMOD: Math.floor((baseStats.STR - 10) / 2),
     DEXMOD: Math.floor((baseStats.DEX - 10) / 2),
@@ -126,6 +128,7 @@ const characterBuilder = (charInfo) => {
   };
 
   let armorfunc = (armorType, armor) => {
+    console.log(armorType, armor)
     switch (armorType) {
       case "light_armor":
         return light_armor[armor] + mods.DEXMOD;
@@ -150,9 +153,8 @@ const characterBuilder = (charInfo) => {
     : 10 + mods.WISMOD;
   const max_hp = hitDie + mods.CONMOD;
 
-  characterStats = {
+  let characterStats = {
     baseStats,
-    mods,
     passive_perception,
     prof_bonus,
     saving_throws,

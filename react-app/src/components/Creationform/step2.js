@@ -6,7 +6,7 @@ import {getRaces} from "../../store/races"
 import {getModalRace} from "../../store/modalStore"
 import RaceDetails from "./raceModal"
 import { step2Submit } from "../../store/characterFormStep";
-
+import "./step2.css"
 
 const Step2 = () =>{
 const dispatch = useDispatch();
@@ -59,7 +59,8 @@ const step2Edit=(e)=>{
             {step2Complete === false && (
               <div className="step2FormContainer">
                 {races && (
-                  <div>
+                  <div className="raceContainer">
+                    <div>Now pick your character's race:</div>
                     <form>
                       <div
                         className="raceButtonMatrix"
@@ -68,7 +69,7 @@ const step2Edit=(e)=>{
                         }}
                       >
                         {races.map((race) => (
-                          <div>
+                          <div className="raceBox">
                             <input
                               type="radio"
                               name="raceCheck"
@@ -80,7 +81,7 @@ const step2Edit=(e)=>{
                             <div>
                               <button
                                 id={race.index}
-                                className="button"
+                                className="raceInfoButton"
                                 onClick={openModal}
                               >
                                 More info

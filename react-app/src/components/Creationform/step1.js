@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import {formStepFunc} from "../../store/characterFormStep"
+import { formStepFunc } from "../../store/characterFormStep";
 import { step1Submit } from "../../store/characterFormStep";
 
-const Step1 = () =>{
-    const dispatch = useDispatch()
-    const [step1Complete, setStep1Complete] = useState(false)
-    const [charName, setCharName] = useState("")
-    const [charAlign, setCharAlign]= useState("")
+const Step1 = () => {
+  const dispatch = useDispatch();
+  const [step1Complete, setStep1Complete] = useState(false);
+  const [charName, setCharName] = useState();
+  const [charAlign, setCharAlign] = useState();
 
-    const finishStep1=(e)=>{
-       setStep1Complete(true)
-     dispatch(formStepFunc(2))
+  const finishStep1 = (e) => {
+    setStep1Complete(true);
+    dispatch(formStepFunc(2));
     dispatch(step1Submit({ name: charName, alignment: charAlign }));
-    }
+  };
 
-    const step1Edit=(e)=>{
-        setStep1Complete(false)
-    }
+  const step1Edit = (e) => {
+    setStep1Complete(false);
+  };
 
-    return (
-      <div className="step1Div">
-        {step1Complete === false && (
-          <div className="step1FormContainer">
-            <form>
+  return (
+    <div className="step1Div">
+      {step1Complete === false && (
+        <div className="step1FormContainer">
+          <form>
+            <div className="inputName">
               <label>Character Name</label>
               <input
                 value={charName}
@@ -33,13 +34,17 @@ const Step1 = () =>{
                 }}
                 required={true}
               ></input>
+            </div>
+            <div className="alignmentContainer" required>
+              <div>Pick you character's alignment:</div>
               <div
+                required={true}
                 className="alignmentButtonMatrix"
                 onChange={(e) => {
                   setCharAlign(e.target.value);
                 }}
               >
-                <div>
+                <div className="checkboxInput">
                   <input
                     type="radio"
                     name="alignmentCheck"
@@ -49,8 +54,9 @@ const Step1 = () =>{
                   />
                   <label for="LGCheck">Lawful Good</label>
                 </div>
-                <div>
+                <div className="checkboxInput">
                   <input
+                    required={true}
                     type="radio"
                     name="alignmentCheck"
                     value={"NG"}
@@ -58,7 +64,7 @@ const Step1 = () =>{
                   />
                   <label for="NGCheck">Neutral Good</label>
                 </div>
-                <div>
+                <div className="checkboxInput">
                   <input
                     type="radio"
                     name="alignmentCheck"
@@ -67,7 +73,7 @@ const Step1 = () =>{
                   />
                   <label for="CGCheck">Chaotic Good</label>
                 </div>
-                <div>
+                <div className="checkboxInput">
                   <input
                     type="radio"
                     name="alignmentCheck"
@@ -76,7 +82,7 @@ const Step1 = () =>{
                   />
                   <label for="LNCheck">Lawful Neutral</label>
                 </div>
-                <div>
+                <div className="checkboxInput">
                   <input
                     type="radio"
                     name="alignmentCheck"
@@ -85,7 +91,7 @@ const Step1 = () =>{
                   />
                   <label for="TNCheck">True Neutral</label>
                 </div>
-                <div>
+                <div className="checkboxInput">
                   <input
                     type="radio"
                     name="alignmentCheck"
@@ -94,7 +100,7 @@ const Step1 = () =>{
                   />
                   <label for="CNCheck">Chaotic Neutal</label>
                 </div>
-                <div>
+                <div className="checkboxInput">
                   <input
                     type="radio"
                     name="alignmentCheck"
@@ -103,7 +109,7 @@ const Step1 = () =>{
                   />
                   <label for="LECheck">Lawful Evil</label>
                 </div>
-                <div>
+                <div className="checkboxInput">
                   <input
                     type="radio"
                     name="alignmentCheck"
@@ -112,7 +118,7 @@ const Step1 = () =>{
                   />
                   <label for="NECheck">Neutral Evil</label>
                 </div>
-                <div>
+                <div className="checkboxInput">
                   <input
                     type="radio"
                     name="alignmentCheck"
@@ -122,23 +128,22 @@ const Step1 = () =>{
                   <label for="CECheck">Chaotic Evil</label>
                 </div>
               </div>
-              <button type="button" onClick={finishStep1}>
-                Continue to next Step
-              </button>
-            </form>
-          </div>
-        )}
+            </div>
+            <button onClick={finishStep1}>Continue to next Step</button>
+          </form>
+        </div>
+      )}
 
-        {step1Complete === true && (
-          <div>
-            <div>{charName}</div>
-            <div>{charAlign}</div>
-            <button type="button" onClick={step1Edit}>
-              Edit Step 1
-            </button>
-          </div>
-        )}
-      </div>
-    );
-}
-export default Step1
+      {step1Complete === true && (
+        <div>
+          <div>{charName}</div>
+          <div>{charAlign}</div>
+          <button type="button" onClick={step1Edit}>
+            Edit Step 1
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+export default Step1;

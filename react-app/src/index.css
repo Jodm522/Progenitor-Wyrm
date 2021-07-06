@@ -1,1 +1,22 @@
-/* TODO Add site wide styles */
+:root{
+    --accent-one: #B42619;
+    --accent-two:  #972829;
+    --accent-three: #133756;
+    --accent-four: #2B3C3E;
+}
+
+body{
+    background-image: url("./PW-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+button{
+  border-radius: 10px;
+  background-color: var(--accent-one);
+  border:2px solid var(--accent-three);
+  margin: 5px;
+}
+*{
+  margin: 0;
+}

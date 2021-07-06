@@ -1,0 +1,59 @@
+.raceButtonMatrix {
+  display: grid;
+  grid-template-areas:
+    "button-1 button-2 button-3"
+    "button-4 button-5 button-6"
+    "button-7 button-8 button-9";
+  cursor: pointer;
+  padding: 10px;
+}
+
+.raceBox {
+  border: 2px solid;
+  align-items: center;
+  text-align: center;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.raceBox Input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.raceContainer {
+  text-align: center;
+}
+
+.raceBox label {
+  cursor: pointer;
+}
+
+.classButtonMatrix {
+  display: grid;
+  grid-template-areas:
+    "button-1 button-2 button-3"
+    "button-4 button-5 button-6"
+    "button-7 button-8 button-9"
+    "button-10 button-11 button-12";
+}
+
+.classButton{
+  border: 2px solid;
+  align-items: center;
+  text-align: center;
+  margin: 5px;
+ border-radius: 8px;
+}
+
+.classButton Input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}

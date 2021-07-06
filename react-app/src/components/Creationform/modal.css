@@ -1,3 +1,15 @@
+:root{
+    --accent-one: #B42619;
+    --accent-two:  #972829;
+    --accent-three: #131d56;
+    --accent-four: #2B3C3E;
+    --accent-5: #d6c59f;
+    --text-color: #383636;
+}
+
+
+
+
 .ModalComp {
     margin: 1rem auto;
     max-width: 1000px;
@@ -13,18 +25,22 @@
   }
 
   .modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     align-self: flex-start;
-
+    border:2px solid var(--accent-four);
+    border-radius: 10px;
     z-index: 100;
     height: fit-content;
     width: 500px;
     position: absolute;
     background-color: #fff;
-    border-radius: 2px;
     box-shadow: 0 2px 8px 3px;
-    font-family: Helvetica, Arial, sans-serif;
     padding: 10px;
     overflow: auto;
+    background-image: url("../../PW-background.jpg");
+    /* text-align: center; */
   }
 
   .modal #close {

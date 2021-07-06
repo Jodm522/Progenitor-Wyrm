@@ -10,7 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import CreationForm from "./components/Creationform";
 import CustomizeForm from "./components/Customizeform";
-
+import RollStats from "./components/Customizeform/statsRoll"
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch();
@@ -51,6 +51,9 @@ function App() {
         </Route>
         <Route path="/characters/customize" exact>
           <CustomizeForm />
+        </Route>
+        <Route path ="/dragTest" exact>
+          <RollStats />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -66,9 +66,10 @@ return (
               setCharClass(e.target.value);
             }}
           >
-            {classes &&
+            {classes && <div className = "classButtonMatrix">
+            {
               classes.map((thisClass) => (
-                <div>
+                  <div className = "classButton">
                   <input
                     type="radio"
                     name="raceCheck"
@@ -87,8 +88,9 @@ return (
                       More info
                     </button>
                   </div>
-                </div>
+                  </div>
               ))}
+                </div>}
           </div>
           <button type="button" onClick={finishStep3}>
             Continue to next Step
