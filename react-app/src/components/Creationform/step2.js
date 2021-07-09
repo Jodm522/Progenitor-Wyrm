@@ -16,7 +16,6 @@ const [modal, setModal] = useState(false);
 
 
   const openModal = (e) =>{
-
   e.preventDefault();
   console.log(e.target.id)
   dispatch(getModalRace(e.target.id))

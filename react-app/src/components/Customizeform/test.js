@@ -138,13 +138,13 @@ export const characterBuilder = (charInfo) => {
         return heavy_armor[armor];
     }
   };
-  const { armorType, armor } = armorStats;
-  let ac = armorfunc(armorType, armor);
+  const { armorType, index } = armorStats;
+  let ac = armorfunc(armorType, index);
 
-  armor === "chain_mail" && baseStats.STR < 13
+  index === "chain_mail" && baseStats.STR < 13
     ? (speed = speed - 10)
     : (speed = speed);
-  armor === "splint" || (armor === "plate" && baseStats.str < 15)
+  index === "splint" || (index === "plate" && baseStats.str < 15)
     ? (speed = speed - 10)
     : (speed = speed);
 
@@ -158,6 +158,7 @@ export const characterBuilder = (charInfo) => {
     passive_perception,
     prof_bonus,
     saving_throws,
+    skillProficiencies,
     skills,
     ac,
     max_hp,

@@ -26,7 +26,7 @@ const setStep2 = (step2Details) => ({
 const setStep3 = (step3Details) => ({
   type: SET_STEP_3,
   step3Details: {
-    class: step3Details,
+    charClass: step3Details,
   },
 });
 

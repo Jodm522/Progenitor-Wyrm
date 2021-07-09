@@ -20,6 +20,12 @@ const Step1 = () => {
     setStep1Complete(false);
   };
 
+  const selectBox = (e) => {
+    e.preventDefault();
+    const button = e.target.id;
+    
+  };
+
   return (
     <div className="step1Div">
       {step1Complete === false && (
@@ -35,7 +41,11 @@ const Step1 = () => {
                 required={true}
               ></input>
             </div>
-            <div className="alignmentContainer" required>
+            <div
+              className="alignmentContainer"
+              required
+              onMouseDown={selectBox}
+            >
               <div>Pick you character's alignment:</div>
               <div
                 required={true}
