@@ -2,19 +2,15 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { races, classes, backgrounds } from "./context";
-import { characterBuilder } from "./test.js";
+import { characterBuilder } from "./statCalc.js";
+import { step4Submit } from "../../store/characterFormStep";
+
 import "./customize.css";
 import RollStats from "./statsRoll";
 const CustomizeForm = () => {
   const dispatch = useDispatch();
   const charDetails = useSelector((state)=> state.formStepReducer)
   //! dummy data for now
-  // const charDetails = {
-  //   step1Details: { name: "Donald Lixakstan", alignment: "LG" },
-  //   step2Details: { race: "dwarf" },
-  //   step3Details: { charClass: "cleric" },
-  // };
-  // const rolls = { STR: 14, DEX: 8, CON: 13, INT: 10, WIS: 15, CHA: 12 };
   //! variables from state
   const { name, alignment } = charDetails?.step1Details;
   const { charClass } = charDetails?.step3Details;
@@ -36,6 +32,8 @@ const CustomizeForm = () => {
     CHA: 0,
   });
 
+
+
   const prof_bonus = 2;
   const savingThrows = classes[charClass]?.savingThrows;
 
@@ -54,10 +52,7 @@ const [rolling, setRolling] = useState(false)
 
 
   const handleProfChecks = (e) => {
-    console.log(tempProfArray);
     const index = tempProfArray.indexOf(e.target.value);
-    console.log(e.target.value);
-    console.log(index);
 
     if (index === -1) {
       tempProfArray.push(e.target.value);
@@ -80,13 +75,8 @@ const [rolling, setRolling] = useState(false)
   const [tempBackArr, setTempBackArr] = useState([])
 
   const setupBackground = (backArr) => {
-    // const backgroundProfs = [...backArr];
     setTempBackArr([])
     setTempBackArr(backArr)
-    // backArr[0]
-    //   ? (skillProficiencies = [...skillProficiencies, ...backgroundProfs])
-    //   : (skillProficiencies = skillProficiencies);
-    // setSkillProficiencies(skillProficiencies);
   };
 
  const backgroundFormSubmit=()=>{
@@ -134,6 +124,7 @@ setArmorStats({...armor})
   //! obj to be passed to the character creator function
   let initalCharStats = {
     baseStats: charStats,
+    background,
     prof_bonus,
     skillProficiencies,
     savingThrows,
@@ -144,6 +135,13 @@ setArmorStats({...armor})
     SetRaceStats();
     SetClassStats();
   }, []);
+
+
+  const finishStep4 = () => {
+   const stats= characterBuilder(initalCharStats);
+   console.log(stats)
+    dispatch(step4Submit(stats));
+  };
 
   return (
     <div>
@@ -215,6 +213,7 @@ setArmorStats({...armor})
           setStep={setStep}
         />
       )}
+
       {step === 0 && (
         <div className="rollButton">
           <div> First we'll set your base stats</div>
@@ -223,10 +222,9 @@ setArmorStats({...armor})
           </button>
         </div>
       )}
- <div>{armorStats.armorName}</div>
+      <div>{armorStats.armorName}</div>
       {step === 1 && (
         <div>
-
           <div>
             {armorOptions?.length > 1 && (
               <div>
@@ -236,9 +234,9 @@ setArmorStats({...armor})
                 <form>
                   <div>
                     {armorOptions.map((arm) => (
-                      <div >
+                      <div>
                         <input
-                          onClick={()=> armorFunc(arm)}
+                          onClick={() => armorFunc(arm)}
                           type="radio"
                           name="armorCheck"
                           id={`${arm?.index}`}
@@ -252,113 +250,108 @@ setArmorStats({...armor})
               </div>
             )}
 
-            {armorOptions?.length <= 1 && <div>
-            <div>
-            This class doesn't have any armor options...
-            </div>
-              <div>You have {armorStats?.armorName}</div>
-            </div>}
-            </div>
-            <button type="button" onClick={()=>setStep(2)}>Submit Armor</button>
-            </div>
-
-            )}
-
-            {step === 2 &&
-            <div>
-            {!(profCheckBox === classProfs.choose) && (
+            {armorOptions?.length <= 1 && (
               <div>
-                <div>Now choose {classProfs.choose} profeciencies</div>
-                {classProfs.options.map((prof) => (
-                  <div>
-                    <input
-                      type="checkbox"
-                      value={prof.name}
-                      id={`${prof.name}Check`}
-                      isChecked={true}
-                      onChange={handleProfChecks}
-                    />
-                    <label for={`${prof.name}Check`}>{prof.name}</label>
-                  </div>
-                ))}
+                <div>This class doesn't have any armor options...</div>
+                <div>You have {armorStats?.armorName}</div>
               </div>
-            )}
-
-            {profCheckBox === classProfs.choose && (
-              <div>
-                <div>Your proficiency choices:</div>
-                {tempProfArray.map((prof) => (
-                  <div>{prof}</div>
-                ))}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setProfCheckBox(0);
-                    setTempProfArray([]);
-                  }}
-                >
-                  Reset profs
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    skillProficiencies = [...tempProfArray];
-                    console.log(skillProficiencies);
-                    setStep(3)
-                  }}
-                >
-                  submit profs
-                </button>
-              </div>
-
             )}
           </div>
-      }
-
-
-
-
-
-      {step === 3 &&<div>
-        <div>Now, choose a background</div>
-        <div>
-          For a {classInfo.name} we reccommend the {classInfo.sugg_background}{" "}
-          background{" "}
-        </div>
-        <div>
-          {backgrounds.map((bg) => (
-            <div>
-              <input
-                type="radio"
-                name="bgCheck"
-                id={`${bg.name}Check`}
-                onClick={(e) => {
-                  setupBackground([...bg.skillProficiencies]);
-                  setBackground(bg.name);
-                }}
-              />
-              <label for={`${bg.name}Check`}>{bg.name}</label>
-              <div>
-                <div>This background's added proficiencies:</div>
-                {bg.skillProficiencies.map((prof) => (
-                  <div>
-                    <div>{prof}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-          <button type="button" onClick={backgroundFormSubmit}>
-            SetProfs
+          <button type="button" onClick={() => setStep(2)}>
+            Submit Armor
           </button>
         </div>
-        <div></div>
-      </div>}
+      )}
 
-      <button
-        type="button"
-        onClick={(e) => console.log(characterBuilder(initalCharStats))}
-      >
+      {step === 2 && (
+        <div>
+          {!(profCheckBox === classProfs.choose) && (
+            <div>
+              <div>Now choose {classProfs.choose} profeciencies</div>
+              {classProfs.options.map((prof) => (
+                <div>
+                  <input
+                    type="checkbox"
+                    value={prof.name}
+                    id={`${prof.name}Check`}
+                    isChecked={true}
+                    onChange={handleProfChecks}
+                  />
+                  <label for={`${prof.name}Check`}>{prof.name}</label>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {profCheckBox === classProfs.choose && (
+            <div>
+              <div>Your proficiency choices:</div>
+              {tempProfArray.map((prof) => (
+                <div>{prof}</div>
+              ))}
+              <button
+                type="button"
+                onClick={() => {
+                  setProfCheckBox(0);
+                  setTempProfArray([]);
+                }}
+              >
+                Reset profs
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  skillProficiencies = [...tempProfArray];
+                  console.log(skillProficiencies);
+                  setStep(3);
+                }}
+              >
+                submit profs
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {step === 3 && (
+        <div>
+          <div>Now, choose a background</div>
+          <div>
+            For a {classInfo.name} we reccommend the {classInfo.sugg_background}{" "}
+            background{" "}
+          </div>
+          <div>
+            {backgrounds.map((bg) => (
+              <div>
+                <input
+                  type="radio"
+                  name="bgCheck"
+                  id={`${bg.name}Check`}
+                  onClick={(e) => {
+                    setupBackground([...bg.skillProficiencies]);
+                    setBackground(bg.name);
+                  }}
+                />
+                <label for={`${bg.name}Check`}>{bg.name}</label>
+                <div>
+                  <div>This background's added proficiencies:</div>
+                  {bg.skillProficiencies.map((prof) => (
+                    <div>
+                      <div>{prof}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <button type="button" onClick={backgroundFormSubmit}>
+              SetProfs
+            </button>
+          </div>
+          <div></div>
+        </div>
+      )}
+
+      <button type="button" onClick={finishStep4}>
         click to print
       </button>
     </div>

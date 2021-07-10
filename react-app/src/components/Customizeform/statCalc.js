@@ -12,6 +12,7 @@ export const characterBuilder = (charInfo) => {
   const {
     baseStats,
     prof_bonus,
+    background,
     skillProficiencies,
     savingThrows,
     armorStats,
@@ -156,6 +157,8 @@ export const characterBuilder = (charInfo) => {
   let characterStats = {
     baseStats,
     passive_perception,
+    armorStats,
+    background,
     prof_bonus,
     saving_throws,
     skillProficiencies,

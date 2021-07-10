@@ -6,6 +6,7 @@ const SET_STEP = "characterForm/SET_STEP";
 const SET_STEP_1 = "characterForm/SET_STEP_1";
 const SET_STEP_2 = "characterForm/SET_STEP_2";
 const SET_STEP_3 = "characterForm/SET_STEP_3";
+const SET_STEP_4 = "characterForm/SET_STEP_4";
 
 const setStep = (formStep) => ({ type: SET_STEP, formStep });
 
@@ -29,6 +30,12 @@ const setStep3 = (step3Details) => ({
     charClass: step3Details,
   },
 });
+const setStep4 = (step4Details) => ({
+  type: SET_STEP_4,
+  step4Details: {
+    charStats: step4Details,
+  },
+});
 
 
 export const formStepFunc = (formStep) => async (dispatch) => {
@@ -47,6 +54,10 @@ export const step2Submit = (step2Details) => async (dispatch) => {
 };
 export const step3Submit = (step3Details) => async (dispatch) => {
   const res = dispatch(setStep3(step3Details));
+  return res;
+};
+export const step4Submit = (step4Details) => async (dispatch) => {
+  const res = dispatch(setStep4(step4Details));
   return res;
 };
 
@@ -68,6 +79,10 @@ export default function formStepReducer(state={}, action) {
     case SET_STEP_3:
       const step3Details = action.step3Details;
       newState = { ...state, step3Details };
+      return newState;
+    case SET_STEP_4:
+      const step4Details = action.step4Details;
+      newState = { ...state, step4Details };
       return newState;
     default:
       return state;
