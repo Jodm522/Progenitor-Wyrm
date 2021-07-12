@@ -1,0 +1,23 @@
+.rollButtons{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.statInput{
+display: flex;
+flex-direction: column;
+}
+.statInputBox{
+
+ display: flex;
+ justify-content: space-between;
+}
+
+.statInputBox input{
+      background-color: var(--accent-5);
+  border: 2px solid var(--accent-two);
+  border-radius: 8px;
+  width: 50px;
+  text-align: center;
+}

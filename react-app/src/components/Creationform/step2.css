@@ -1,3 +1,12 @@
+:root {
+  --accent-one: #b42619;
+  --accent-two: #972829;
+  --accent-three: #131d56;
+  --accent-four: #2b3c3e;
+  --accent-5: #d6c59f;
+  --text-color: #383636;
+}
+
 .raceButtonMatrix {
   display: grid;
   grid-template-areas:
@@ -15,8 +24,26 @@
   margin: 5px;
   cursor: pointer;
   border-radius: 8px;
-}
 
+}
+.raceBox:hover{
+  background-color: #b42619;
+}
+.raceBoxSelected{
+  border: 2px solid;
+  align-items: center;
+  text-align: center;
+  margin: 5px;
+  border-radius: 8px;
+  background-color: var(--accent-two);
+
+}
+.raceBoxSelected Input{
+position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
 .raceBox Input {
   position: absolute;
   opacity: 0;
@@ -43,17 +70,42 @@
 }
 
 .classButton{
+  cursor: pointer;
   border: 2px solid;
   align-items: center;
   text-align: center;
   margin: 5px;
  border-radius: 8px;
 }
-
+.classButton:hover{
+  background-color: #b42619;
+}
 .classButton Input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
+}
+.classButton label{
+  cursor: pointer;
+}
+.classButtonSelected{
+  cursor: pointer;
+  border: 2px solid;
+  align-items: center;
+  text-align: center;
+  margin: 5px;
+ border-radius: 8px;
+ background-color: #972829;
+}
+.classButtonSelected Input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.classButtonSelected label{
+  cursor: pointer;
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { formStepFunc } from "../../store/characterFormStep";
 import { getClasses } from "../../store/classStore";
 
@@ -8,15 +8,15 @@ import { getModalClass } from "../../store/modalStore";
 import ClassDetails from "./classModal";
 import { step3Submit } from "../../store/characterFormStep";
 
-const Step3 = () => {
-  const history = useHistory();
+const Step3 = ({step4Start}) => {
+  // const history = useHistory();
   const dispatch = useDispatch();
   const [step3Complete, setStep3Complete] = useState(false);
   const [charClass, setCharClass] = useState("");
   const [modal, setModal] = useState(false);
 
   const openModal = (e) => {
-    console.log(e.target.id);
+
     dispatch(getModalClass(e.target.id));
     setModal(true);
   };
@@ -28,8 +28,9 @@ const Step3 = () => {
     setStep3Complete(true);
     dispatch(formStepFunc(4));
     dispatch(step3Submit(charClass));
+    step4Start();
   };
-  const step4Start = () => {};
+
 
   useEffect(() => {
     dispatch(getClasses());
@@ -39,16 +40,13 @@ const Step3 = () => {
     return state?.classReducer.results;
   });
 
-  const step3Edit = (e) => {
-    setStep3Complete(false);
-  };
+  // const step3Edit = (e) => {
+  //   setStep3Complete(false);
+  // };
   return (
     <div className="step3Div">
       {modal && (
         <div className="modalContainer">
-          <button id="close" onClick={closeModal}>
-            X
-          </button>
           <ClassDetails modal={modal} closeModal={closeModal} />
         </div>
       )}
@@ -64,7 +62,13 @@ const Step3 = () => {
               {classes && (
                 <div className="classButtonMatrix">
                   {classes.map((thisClass) => (
-                    <div className="classButton">
+                    <div
+                      className={
+                        charClass === thisClass.index
+                          ? "classButtonSelected"
+                          : "classButton"
+                      }
+                    >
                       <input
                         type="radio"
                         name="raceCheck"
@@ -96,14 +100,14 @@ const Step3 = () => {
           </form>
         </div>
       )}
-      {step3Complete && (
+      {/* {step3Complete && (
         <div>
           <div>{charClass}</div>
           <button type="button" onClick={step3Edit} onClick={step4Start}>
             Edit Step 3
           </button>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

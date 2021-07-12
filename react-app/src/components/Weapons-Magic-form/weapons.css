@@ -1,0 +1,287 @@
+.weaponForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topBar2{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin: 10px;
+    align-items: center;
+
+}
+.col1{
+    display: flex;
+    flex-direction: row;
+    width: min-content;
+    padding: 10px;
+
+}
+.inspiration, .profBonus{
+   border: 5px double var(--accent-two);
+    border-radius: 5px;
+     text-align: center;
+     display: flex;
+     justify-content: space-between;
+}
+.saves{
+    border: 5px double var(--accent-two);
+    border-radius: 5px;
+     text-align: center;
+}
+.charInfo2{
+    border: 5px double var(--accent-two);
+    border-radius: 5px;
+     text-align: center;
+    display: grid;
+    width:50%;
+    grid-template-areas: "g1 g2 g3"
+    "g4 g5 g6"
+    "g7 g8 g9";
+}
+.infoFill2{
+    border-bottom: 2px solid var(--accent-three);
+    font-size: 20px;
+}
+ .infoTitle2{
+     font-size: 15px;
+     margin-bottom: 5px;
+ }
+ .nameHolder2{
+     text-align: center;
+      border: 5px double var(--accent-two);
+    border-radius: 5px;
+    padding: 10px;
+    height: 35px
+ }
+ .baseStats2{
+     width: 50%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: space-around;
+     text-align: center;
+     margin: 20px;
+ }
+ .skills{
+     border-bottom: 1px solid var(--accent-two);
+     display: flex;
+     justify-content: space-between;
+     font-size: 12px;
+     align-items: center;
+ }
+ .skillNum{
+     align-self: flex-end;
+     border: 1px solid var(--accent-two);
+     width: 12px;
+     text-align: right;
+ }
+ .bigSkillNum{
+     align-self: flex-end;
+     border: 1px solid var(--accent-two);
+     text-align: right;
+     width: 17px;
+ }
+ .skillTitle{
+     border-bottom: 2px solid var(--accent-two);
+     text-align: center;
+
+ }
+ .profs{
+     display: flex;
+     flex-direction: column;
+       border: 5px double var(--accent-two);
+    border-radius: 5px;
+     padding: 5px;
+     width: 150px;
+     height:375px;
+     justify-content: space-between;
+
+ }
+ .saves{
+     padding: 5px;
+ }
+ .listBox{
+     display: flex;
+     flex-direction: column;
+       border: 5px double var(--accent-two);
+    border-radius: 5px;
+     padding: 5px;
+     width: 150px;
+    height:150px;
+    overflow: auto;
+ }
+ .listBoxTitle{
+     text-align: center;
+     border-bottom: 2px solid var(--accent-two);
+ }
+ .statDiv2{
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     border: 2px solid var(--accent-two);
+     border-radius: 10px;
+     align-items: center;
+     width: 55px;
+     height:55px;
+ }
+ .statMod{
+     width: 25px;
+  border:1px solid var(--accent-two);
+  border-radius: 10px;
+  margin-bottom: 5px;
+ }
+ .rollButton2{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+ }
+.lowerBar{
+
+    display: flex; justify-content: space-around;
+    width: 75%;
+}
+.ac-init-speed{
+ display: flex;
+}
+.statHold{
+ display: flex;
+ text-align: center;
+     flex-direction: column;
+     justify-content: space-around;
+     border: 2px solid var(--accent-two);
+     border-radius: 10px;
+     align-items: center;
+     width: 50px;
+     height:50px;
+     margin:5px;
+    font-size: 13px;
+}
+.col2{
+    display: flex;
+    flex-direction: column;
+ align-items: center;
+
+}
+.subCol1{
+    display: flex;
+    flex-direction: column;
+}
+.spell-cant, .weap-equip{
+    display: flex;
+}
+.statHealth{
+    display: flex;
+ text-align: center;
+     flex-direction: column;
+     justify-content: space-around;
+     border: 2px solid var(--accent-two);
+     border-radius: 10px;
+     align-items: center;
+     width: 100px;
+     height:50px;
+     margin:5px;
+    font-size: 15px;
+}
+.health{
+    display: flex;
+}
+.statHoldMedium{
+ display: flex;
+ text-align: center;
+     flex-direction: column;
+     justify-content: space-around;
+     border: 2px solid var(--accent-two);
+     border-radius: 10px;
+     align-items: center;
+     width: 60px;
+     height:50px;
+     margin:5px;
+    font-size: 13px;
+}
+.formContainer{
+     border: 5px double var(--accent-two);
+    border-radius: 5px;
+    display: flex;
+
+    justify-content: left;
+    justify-items: left;
+}
+.formTitle{
+    text-align: center;
+    font-size: 15px;
+    border-bottom: 2px solid var(--accent-two);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.formInfo{
+    width:100%
+}
+
+.formCheck input{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+
+}
+.formCheck{
+    display: flex;
+border: 2px solid var(--accent-four);
+cursor: pointer;
+width: 100px;
+height:35px;
+text-align: center;
+justify-content: center;
+margin: 5px;
+cursor: pointer;
+border-radius: 10px;
+justify-items: center;
+cursor: pointer;
+/* background-color: var(--accent-two)
+; */
+}
+.formCheck label{
+    cursor: pointer;
+}
+.formCheck:hover{
+    background-color: var(--accent-two);
+}
+.formCheckSelected{
+display: flex;
+border: 2px solid var(--accent-four);
+cursor: pointer;
+width: 100px;
+height:35px;
+text-align: center;
+justify-content: center;
+margin: 5px;
+cursor: pointer;
+border-radius: 10px;
+justify-items: center;
+cursor: pointer;
+ background-color: var(--accent-two)
+;
+}
+.formCheckSelected input{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+
+}
+.buttonContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.formGrid{
+    display: grid;
+    grid-template-areas: "a1 a2 a3 a4"
+  "a5 a6 a7 a8"
+  "a9 a10 a11 a12";
+}

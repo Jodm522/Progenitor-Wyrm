@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import React, {useState } from "react";
+import { useDispatch} from "react-redux";
+
 import { formStepFunc } from "../../store/characterFormStep";
 import { step1Submit } from "../../store/characterFormStep";
 
@@ -23,7 +23,7 @@ const Step1 = () => {
   const selectBox = (e) => {
     e.preventDefault();
     const button = e.target.id;
-    
+
   };
 
   return (
@@ -34,10 +34,12 @@ const Step1 = () => {
             <div className="inputName">
               <label>Character Name</label>
               <input
+
                 value={charName}
                 onChange={(e) => {
                   setCharName(e.target.value);
                 }}
+
                 required={true}
               ></input>
             </div>
@@ -48,14 +50,24 @@ const Step1 = () => {
             >
               <div>Pick you character's alignment:</div>
               <div
+
                 required={true}
                 className="alignmentButtonMatrix"
                 onChange={(e) => {
                   setCharAlign(e.target.value);
+
                 }}
               >
-                <div className="checkboxInput">
+
+                <div
+                  className={
+                    charAlign === "LG"
+                      ? "checkboxInputSelected"
+                      : "checkboxInput"
+                  }
+                >
                   <input
+                    onClick={(e) => {setCharAlign(e.target.value);}}
                     type="radio"
                     name="alignmentCheck"
                     value={"LG"}
@@ -64,9 +76,16 @@ const Step1 = () => {
                   />
                   <label for="LGCheck">Lawful Good</label>
                 </div>
-                <div className="checkboxInput">
+                <div
+                  className={
+                    charAlign === "NG"
+                      ? "checkboxInputSelected"
+                      : "checkboxInput"
+                  }
+                >
                   <input
-                    required={true}
+
+                     onClick={(e) => {setCharAlign(e.target.value);}}required={true}
                     type="radio"
                     name="alignmentCheck"
                     value={"NG"}
@@ -74,8 +93,14 @@ const Step1 = () => {
                   />
                   <label for="NGCheck">Neutral Good</label>
                 </div>
-                <div className="checkboxInput">
-                  <input
+                <div
+                  className={
+                    charAlign === "CG"
+                      ? "checkboxInputSelected"
+                      : "checkboxInput"
+                  }
+                >
+                  <input onClick={(e) => {setCharAlign(e.target.value)}}
                     type="radio"
                     name="alignmentCheck"
                     value={"CG"}
@@ -83,8 +108,14 @@ const Step1 = () => {
                   />
                   <label for="CGCheck">Chaotic Good</label>
                 </div>
-                <div className="checkboxInput">
-                  <input
+                <div
+                  className={
+                    charAlign === "LN"
+                      ? "checkboxInputSelected"
+                      : "checkboxInput"
+                  }
+                >
+                  <input onClick={(e) => {setCharAlign(e.target.value)}}
                     type="radio"
                     name="alignmentCheck"
                     value={"LN"}
@@ -92,8 +123,14 @@ const Step1 = () => {
                   />
                   <label for="LNCheck">Lawful Neutral</label>
                 </div>
-                <div className="checkboxInput">
-                  <input
+                <div
+                  className={
+                    charAlign === "TN"
+                      ? "checkboxInputSelected"
+                      : "checkboxInput"
+                  }
+                >
+                  <input onClick={(e) => {setCharAlign(e.target.value);}}
                     type="radio"
                     name="alignmentCheck"
                     value={"TN"}
@@ -101,8 +138,14 @@ const Step1 = () => {
                   />
                   <label for="TNCheck">True Neutral</label>
                 </div>
-                <div className="checkboxInput">
-                  <input
+                <div
+                  className={
+                    charAlign === "CN"
+                      ? "checkboxInputSelected"
+                      : "checkboxInput"
+                  }
+                >
+                  <input onClick={(e) => {setCharAlign(e.target.value);}}
                     type="radio"
                     name="alignmentCheck"
                     value={"CN"}
@@ -110,8 +153,14 @@ const Step1 = () => {
                   />
                   <label for="CNCheck">Chaotic Neutal</label>
                 </div>
-                <div className="checkboxInput">
-                  <input
+                <div
+                  className={
+                    charAlign === "LE"
+                      ? "checkboxInputSelected"
+                      : "checkboxInput"
+                  }
+                >
+                  <input onClick={(e) => {setCharAlign(e.target.value); }}
                     type="radio"
                     name="alignmentCheck"
                     value={"LE"}
@@ -119,8 +168,14 @@ const Step1 = () => {
                   />
                   <label for="LECheck">Lawful Evil</label>
                 </div>
-                <div className="checkboxInput">
-                  <input
+                <div
+                  className={
+                    charAlign === "NE"
+                      ? "checkboxInputSelected"
+                      : "checkboxInput"
+                  }
+                >
+                  <input onClick={(e) => {setCharAlign(e.target.value); }}
                     type="radio"
                     name="alignmentCheck"
                     value={"NE"}
@@ -128,8 +183,14 @@ const Step1 = () => {
                   />
                   <label for="NECheck">Neutral Evil</label>
                 </div>
-                <div className="checkboxInput">
-                  <input
+                <div
+                  className={
+                    charAlign === "CE"
+                      ? "checkboxInputSelected"
+                      : "checkboxInput"
+                  }
+                >
+                  <input onClick={(e) => {setCharAlign(e.target.value);}}
                     type="radio"
                     name="alignmentCheck"
                     value={"CE"}
@@ -139,12 +200,12 @@ const Step1 = () => {
                 </div>
               </div>
             </div>
-            <button onClick={finishStep1}>Continue to next Step</button>
+            {charName&&charAlign &&<button type="button" onClick={finishStep1}>Continue to next Step</button>}
           </form>
         </div>
       )}
 
-      {step1Complete === true && (
+      {/* {step1Complete === true && (
         <div>
           <div>{charName}</div>
           <div>{charAlign}</div>
@@ -152,7 +213,7 @@ const Step1 = () => {
             Edit Step 1
           </button>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

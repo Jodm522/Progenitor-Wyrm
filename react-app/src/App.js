@@ -11,6 +11,9 @@ import { authenticate } from "./store/session";
 import CreationForm from "./components/Creationform";
 import CustomizeForm from "./components/Customizeform";
 import WeaponsandMagic from "./components/Weapons-Magic-form/weapons-magic";
+import ProfilePage from "./components/profile/profilePage";
+import CharacterPage from "./components/characterPage/index.js";
+import Home from "./components/homePage/home";
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch();
@@ -44,17 +47,23 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path="/" exact={true}>
-          <h1>My Home Page</h1>
+          <Home />
         </Route>
-        <Route path="/characters/create" exact>
+        <ProtectedRoute path="/characters/create" exact>
           <CreationForm />
-        </Route>
-        <Route path="/characters/customize" exact>
+        </ProtectedRoute>
+        <ProtectedRoute path="/characters/customize" exact>
           <CustomizeForm />
-        </Route>
-        <Route path ="/test" exact>
+        </ProtectedRoute>
+        <ProtectedRoute path ="/characters/magic" exact>
           <WeaponsandMagic />
+        </ProtectedRoute>
+        <Route path="/myProfile">
+          <ProfilePage/>
         </Route>
+        <ProtectedRoute path="/characters/:charId">
+        <CharacterPage />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

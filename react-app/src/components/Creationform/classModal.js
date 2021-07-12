@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import React from "react";
+import {  useSelector } from "react-redux";
+
 import "./modal.css";
 import "./classModal.css";
 import "./create-form.css";
 
-export default function RaceDetails(props) {
+export default function RaceDetails({closeModal}) {
   const classToShow = useSelector((state) => {
     return state?.modalReducer;
   });
 
   return (
     <div className="modal">
+      <button onClick={closeModal}>Close</button>
       <div className="classModalTitle">{classToShow.name}</div>
       <div className="modalDetails">
         <div className="classBox1">
-
-          <div className="hitDieDiv">Hit Die:
-          <div> d{classToShow.hit_die}</div>
+          <div className="hitDieDiv">
+            Hit Die:
+            <div> d{classToShow.hit_die}</div>
           </div>
           <div className="savingThrows">
             <div className="savingThrowsHead">Saving throws:</div>
@@ -48,7 +49,6 @@ export default function RaceDetails(props) {
             ))}
           </div>
         </div>
-        
       </div>
     </div>
   );

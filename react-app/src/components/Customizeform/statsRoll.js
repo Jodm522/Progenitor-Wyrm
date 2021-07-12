@@ -1,8 +1,8 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-
-const RollStats = ({ charStats, setRolling, addRolls,setStep }) => {
+import "./rollModal.css";
+const RollStats = ({ charStats, setRolling, addRolls, setStep }) => {
   const newStats = { ...charStats };
   const [rolls, setRolls] = useState([]);
   const [STR, setSTR] = useState(newStats.STR);
@@ -71,11 +71,11 @@ const RollStats = ({ charStats, setRolling, addRolls,setStep }) => {
     setRolls(newArr);
     setRollStep(7);
   };
-  const finishRolls=()=>{
-    addRolls({STR,DEX,CON,INT,WIS,CHA})
-    setRolling(false)
-    setStep(1)
-  }
+  const finishRolls = () => {
+    addRolls({ STR, DEX, CON, INT, WIS, CHA });
+    setRolling(false);
+    setStep(1);
+  };
   return (
     <div className="modal">
       <div className="baseStats">
@@ -105,17 +105,19 @@ const RollStats = ({ charStats, setRolling, addRolls,setStep }) => {
         </div>
       </div>
 
-      {rollStep===0 &&
-      <div>
-      <div>Would you rather roll stats here or input them yourself?</div>
-      <button type="button" onClick={()=>(rollStats(), setRollStep(1))}>
-        Roll for me
-      </button>
-      <button type="button" onClick={rollStats}>
-        I want to input
-      </button>
-      </div>
-      }
+      {rollStep === 0 && (
+        <div>
+          <div>Would you rather roll stats here or input them yourself?</div>
+          <div className="rollButtons">
+            <button type="button" onClick={() => (rollStats(), setRollStep(1))}>
+              Roll for me
+            </button>
+            <button type="button" onClick={rollStats}>
+              I want to input
+            </button>
+          </div>
+        </div>
+      )}
       <div className="statsRolled">
         {rollStep === 1 && (
           <div>
@@ -209,7 +211,76 @@ const RollStats = ({ charStats, setRolling, addRolls,setStep }) => {
         )}
         {rollStep === 7 && (
           <div>
-            <div>
+            <div className="rollButtons">
+              <button type="button" onClick={finishRolls}>
+                Complete and continue
+              </button>
+            </div>
+          </div>
+        )}
+        {rollStep === 0 && (
+          <div className="statInput">
+            <div className="statInputBox">
+              <label>Strength</label>
+              <input
+                value={STR}
+                onChange={(e) => {
+                  setSTR(e.target.value);
+                }}
+              ></input>
+            </div>
+
+            <div className="statInputBox">
+              <label>Dexterity</label>
+              <input
+                value={DEX}
+                onChange={(e) => {
+                  setDEX(e.target.value);
+                }}
+              ></input>
+            </div>
+
+            <div className="statInputBox">
+              <label>Constitution</label>
+              <input
+                value={CON}
+                onChange={(e) => {
+                  setCON(e.target.value);
+                }}
+              ></input>
+            </div>
+
+            <div className="statInputBox">
+              <label>Intelligence</label>
+              <input
+                value={INT}
+                onChange={(e) => {
+                  setINT(e.target.value);
+                }}
+              ></input>
+            </div>
+
+            <div className="statInputBox">
+              <label>Wisdom</label>
+              <input
+                value={WIS}
+                onChange={(e) => {
+                  setWIS(e.target.value);
+                }}
+              ></input>
+            </div>
+
+            <div className="statInputBox">
+              <label>Charisma</label>
+              <input
+                value={CHA}
+                onChange={(e) => {
+                  setCHA(e.target.value);
+                }}
+              ></input>
+            </div>
+
+            <div className="rollButtons">
               <button type="button" onClick={finishRolls}>
                 Complete and continue
               </button>

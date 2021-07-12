@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import React from "react";
+import { useSelector } from "react-redux";
+
 import "./raceModal.css";
 import "./modal.css";
 import "./create-form.css";
 
-export default function RaceDetails() {
+export default function RaceDetails({closeModal}) {
   const raceToShow = useSelector((state) => {
     return state?.modalReducer;
   });
 
   return (
     <div className="modal">
+      <button onClick={closeModal}>Close</button>
       <div className="modalTitle">{raceToShow.name}</div>
-      
+
       <div className="modalDetails">
         <div className="raceStats">
           <div className="raceStatsHead">

@@ -7,9 +7,6 @@
     --text-color: #383636;
 }
 
-
-
-
 .formContainer {
     margin: 0 auto;
   display: flex;
@@ -60,7 +57,28 @@ justify-content: center;
 margin: 5px;
 cursor: pointer;
 border-radius: 10px;
-;
+
+}
+
+.checkboxInputSelected{
+ display: flex;
+border: 2px solid var(--accent-four);
+cursor: pointer;
+width: 100px;
+height:25px;
+text-align: center;
+justify-content: center;
+margin: 5px;
+cursor: pointer;
+border-radius: 10px;
+background-color: #972829;
+}
+.checkboxInputSelected Input{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 .checkboxInput Input{
   position: absolute;

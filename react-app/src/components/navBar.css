@@ -6,7 +6,18 @@
     --accent-5: #d6c59f;
     --text-color: #383636;
 }
-
+nav{
+    height: 50px;
+}
+li {
+    text-align: center;
+    width: fit-content;
+    height: 20px;
+      border-radius: 10px;
+  background-color: var(--accent-one);
+  border:2px solid var(--accent-three);
+  margin: 5px;
+}
 
 .navContainer ul {
     display: flex;

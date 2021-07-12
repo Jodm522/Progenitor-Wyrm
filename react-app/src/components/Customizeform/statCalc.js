@@ -19,7 +19,7 @@ export const characterBuilder = (charInfo) => {
     hitDie,
 
   } = charInfo;
-  console.log(skillProficiencies)
+
   let {speed} = charInfo
   const mods = {
     STRMOD: Math.floor((baseStats.STR - 10) / 2),
@@ -107,7 +107,7 @@ export const characterBuilder = (charInfo) => {
       : mods.WISMOD,
   };
 
-  const hp = hitDie + mods.CONMOD;
+
 
   const light_armor = {
     padded: 11,
@@ -129,7 +129,7 @@ export const characterBuilder = (charInfo) => {
   };
 
   let armorfunc = (armorType, armor) => {
-    console.log(armorType, armor)
+
     switch (armorType) {
       case "light_armor":
         return light_armor[armor] + mods.DEXMOD;
@@ -155,7 +155,7 @@ export const characterBuilder = (charInfo) => {
   const max_hp = hitDie + mods.CONMOD;
 
   let characterStats = {
-    baseStats,
+    stats:{basestats:baseStats, mods:mods, speed:speed},
     passive_perception,
     armorStats,
     background,

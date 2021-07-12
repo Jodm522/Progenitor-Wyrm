@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.race_routes import race_routes
 from .api.details_routes import details_routes
 from .api.class_routes import class_routes
+from .api.character_routes import character_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -36,6 +37,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(details_routes, url_prefix='/api/details')
 app.register_blueprint(race_routes, url_prefix='/api/races')
 app.register_blueprint(class_routes, url_prefix='/api/classes')
+app.register_blueprint(character_routes, url_prefix='/api/characters')
 db.init_app(app)
 Migrate(app, db)
 

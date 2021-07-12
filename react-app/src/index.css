@@ -16,6 +16,7 @@ button{
   background-color: var(--accent-one);
   border:2px solid var(--accent-three);
   margin: 5px;
+  cursor: pointer;
 }
 *{
   margin: 0;
